@@ -24,61 +24,61 @@
  */
 class Solution {
 private:
-	int GetColumnSum(ListNode* p1, ListNode* p2, bool& isCarry)
-	{	
-		//pre-condition: p1 and p2 will not be all NULL, only one is NULL
-		int temp = 0;
-		if (p1 != NULL)
-			temp += p1->val;
-		if (p2 != NULL)
-			temp += p2->val;
-		if (isCarry)
-		{
-			isCarry = false;
-			temp += 1;
-		}
-		if (temp >= 10)
-		{
-			temp = temp % 10;
-			isCarry = true;
-		}
-		return temp;
-	}
+    int GetColumnSum(ListNode* p1, ListNode* p2, bool& isCarry)
+    {    
+        //pre-condition: p1 and p2 will not be all NULL, only one is NULL
+        int temp = 0;
+        if (p1 != NULL)
+            temp += p1->val;
+        if (p2 != NULL)
+            temp += p2->val;
+        if (isCarry)
+        {
+            isCarry = false;
+            temp += 1;
+        }
+        if (temp >= 10)
+        {
+            temp = temp % 10;
+            isCarry = true;
+        }
+        return temp;
+    }
 public:
-	ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
-		if (l1 == NULL || l2 == NULL)
-		{
-			return NULL;
-		}
-		ListNode *pList, *pHead;
-		ListNode *p1 = l1;
-		ListNode *p2 = l2;
-		bool isCarry(false);
-		pHead = pList = new ListNode(GetColumnSum(p1, p2, isCarry));
-		p1 = p1->next;
-		p2 = p2->next;
-		while (p1 != NULL && p2 != NULL)
-		{
-			ListNode *pNode = new ListNode(GetColumnSum(p1, p2, isCarry));
-			pList->next = pNode;
-			pList = pList->next;
-			p1 = p1->next;
-			p2 = p2->next;
-		}		
-		p1 == NULL ? p1 = p2: p1; //only use p1 to maintain the left part
-		while (p1 != NULL)
-		{
-			ListNode *pNode = new ListNode(GetColumnSum(p1, NULL, isCarry));
-			pList->next = pNode;
-			pList = pList->next;
-			p1 = p1->next;
-		}
-		if (isCarry)
-		{
-			ListNode *pNode = new ListNode(1);
-			pList->next = pNode;
-			pList = pList->next;
-		}
-		return pHead;
-	}
+    ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
+        if (l1 == NULL || l2 == NULL)
+        {
+            return NULL;
+        }
+        ListNode *pList, *pHead;
+        ListNode *p1 = l1;
+        ListNode *p2 = l2;
+        bool isCarry(false);
+        pHead = pList = new ListNode(GetColumnSum(p1, p2, isCarry));
+        p1 = p1->next;
+        p2 = p2->next;
+        while (p1 != NULL && p2 != NULL)
+        {
+            ListNode *pNode = new ListNode(GetColumnSum(p1, p2, isCarry));
+            pList->next = pNode;
+            pList = pList->next;
+            p1 = p1->next;
+            p2 = p2->next;
+        }        
+        p1 == NULL ? p1 = p2: p1; //only use p1 to maintain the left part
+        while (p1 != NULL)
+        {
+            ListNode *pNode = new ListNode(GetColumnSum(p1, NULL, isCarry));
+            pList->next = pNode;
+            pList = pList->next;
+            p1 = p1->next;
+        }
+        if (isCarry)
+        {
+            ListNode *pNode = new ListNode(1);
+            pList->next = pNode;
+            pList = pList->next;
+        }
+        return pHead;
+    }
 };

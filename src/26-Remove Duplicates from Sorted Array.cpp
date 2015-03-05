@@ -15,21 +15,21 @@
 class Solution {
 public:
     int removeDuplicates(int A[], int n) {
-		if (n == 0) 
-		{
-			return 0;
-		}
-		int lastNumber = A[0];
-		int length = 1;
-		for (int i = 1; i < n; ++i)
-		{
-			if (A[i] != lastNumber) 
-			{
-				lastNumber = A[i];
-				++length;
-				A[length-1] = lastNumber;
-			}
-		}
-		return length;
+        if (n == 0) 
+        {
+            return 0;
+        }
+        int lastNumber = A[0];
+        int length = 1;
+        for (int i = 1; i < n; ++i)
+        {
+            if (A[i] != lastNumber) 
+            {
+                lastNumber = A[i];
+                ++length;
+                A[length-1] = lastNumber;
+            }
+        }
+        return length;
     }
 };

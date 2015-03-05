@@ -15,7 +15,7 @@
 * Try to do this in one pass.
 *          
 * Solution: Use two pointer, one is for head, and the other moves forward n step.
-* 			Then two pointer move together, when reach the end, the first one is the nth node from end.
+*           Then two pointer move together, when reach the end, the first one is the nth node from end.
 *    
 **********************************************************************************/
 /**
@@ -29,31 +29,31 @@
 class Solution {
 public:
     ListNode *removeNthFromEnd(ListNode *head, int n) {
-		if (head == NULL || n <= 0) 
-		{
-			return NULL;
-		}
-		ListNode* pHead =  new ListNode(0);
-		pHead->next = head;
-		
+        if (head == NULL || n <= 0) 
+        {
+            return NULL;
+        }
+        ListNode* pHead =  new ListNode(0);
+        pHead->next = head;
+        
         ListNode* pFirst = pHead;
-		ListNode* pSecond = pHead;
-		int step = n;
-		while (step > 0)
-		{
-			if (pSecond->next == NULL) 
-			{
-				return head;
-			}
-			pSecond = pSecond->next;
-			--step;
-		}
-		while (pSecond->next != NULL)
-		{
-			pSecond = pSecond->next;
-			pFirst = pFirst->next;
-		}
-		pFirst->next = pFirst->next->next;
-		return pHead->next;
+        ListNode* pSecond = pHead;
+        int step = n;
+        while (step > 0)
+        {
+            if (pSecond->next == NULL) 
+            {
+                return head;
+            }
+            pSecond = pSecond->next;
+            --step;
+        }
+        while (pSecond->next != NULL)
+        {
+            pSecond = pSecond->next;
+            pFirst = pFirst->next;
+        }
+        pFirst->next = pFirst->next->next;
+        return pHead->next;
     }
 };

@@ -9,7 +9,7 @@
 * For "bbbbb" the longest substring is "b", with the length of 1.
 * 
 * Solution: Use hasp-map to store the last appearance of character.
-*            When met the duplicate char, means the previous substring is over, and need to re-cal after the previous duplicate one.
+*           When met the duplicate char, means the previous substring is over, and need to re-cal after the previous duplicate one.
 *
 **********************************************************************************/
 

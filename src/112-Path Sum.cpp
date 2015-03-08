@@ -17,8 +17,8 @@
 * return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
 * 
 * Solution: 1. Pre-Order traverse.
-*			2. Must a root-to-leaf path. Need to judge if the node is leaf
-*			3. Negative number
+*           2. Must a root-to-leaf path. Need to judge if the node is leaf
+*           3. Negative number
 *              
 **********************************************************************************/
 
@@ -33,26 +33,26 @@
  */
 class Solution {
 private:
-	bool IsLeaf(TreeNode *rNode)
-	{
-		return (rNode!=NULL && rNode->left==NULL && rNode->right==NULL)?true:false;
-	}
-	bool PreorderTraverse(TreeNode *rNode, int iSum)
-	{
-		if (rNode == NULL)
-			return false;
-		if (iSum == rNode->val && IsLeaf(rNode))
-			return true;
-		if (PreorderTraverse(rNode->left, iSum-rNode->val))
-			return true;
-		if (PreorderTraverse(rNode->right, iSum-rNode->val))
-			return true;
-		return false;
-	}
+    bool IsLeaf(TreeNode *rNode)
+    {
+        return (rNode!=NULL && rNode->left==NULL && rNode->right==NULL)?true:false;
+    }
+    bool PreorderTraverse(TreeNode *rNode, int iSum)
+    {
+        if (rNode == NULL)
+            return false;
+        if (iSum == rNode->val && IsLeaf(rNode))
+            return true;
+        if (PreorderTraverse(rNode->left, iSum-rNode->val))
+            return true;
+        if (PreorderTraverse(rNode->right, iSum-rNode->val))
+            return true;
+        return false;
+    }
 public:
     bool hasPathSum(TreeNode *root, int sum) {
-		if (root == NULL)
-			return false;
-		return PreorderTraverse(root, sum);
+        if (root == NULL)
+            return false;
+        return PreorderTraverse(root, sum);
     }
 };

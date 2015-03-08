@@ -9,7 +9,9 @@
 * 
 * Note: You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
 * 
-* Solution: 
+* Solution: 1. Vmax[n]=Vmax[0..i]+Vmax[i...n], use i to divide the period into two parts. 
+*           2. It is easy to calc Vmax[0..i], do as No.121.
+*           3. For Vmax[i...n], it equals -Vmin[n...i]. From now to before, loss more means earn more from before to now.
 *              
 **********************************************************************************/
 
@@ -20,7 +22,7 @@ public:
             return 0;
         int n = prices.size();
 
-        // 
+        // Just Like No.121, calculate the max profit for each day.
         vector<int> vecProfit_0toi(n, 0);//vecProfit[0]=0;
         int iMin = prices[0];
         for (int i = 1; i < n; ++i)
@@ -34,6 +36,7 @@ public:
                 iMin = prices[i];
         }
 
+        //Reverse
         //from now to before, generate the array for loss, loss more means earn more from before to now.
         vector<int> vecLoss_ntoi(n, 0);
         int iMax = prices[n-1];
